@@ -9,6 +9,27 @@
 
 	<!-- Include all sniffs in an external standard directory -->
 
+	<!-- Exclude folders not containing production code -->
+    <exclude-pattern type="relative">build/*</exclude-pattern>
+    <exclude-pattern type="relative">tests/*</exclude-pattern>
+
+    <!-- Exclude 3rd party libraries. -->
+    <exclude-pattern type="relative">libraries/*</exclude-pattern>
+    <exclude-pattern type="relative">vendor/*</exclude-pattern>
+
+	<!-- Exclude layouts, views & tmpl folders -->
+    <exclude-pattern type="relative">*/layouts/*</exclude-pattern>
+    <exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+
+	<!-- Exclude underscore stuff -->
+	<rule ref="Joomla.NamingConventions.ValidVariableName">
+		<exclude name="Joomla.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassVarHasUnderscore"/>
+	</rule>
+	<rule ref="Joomla.NamingConventions.ValidFunctionName">
+		<exclude name="Joomla.NamingConventions.ValidFunctionName.MethodUnderscore"/>
+	</rule>
+
 	<!-- Include some additional sniffs from the Generic standard -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
@@ -173,5 +194,5 @@
 
 	<!-- Include some additional sniffs from the Zend standard -->
 	<rule ref="Zend.Files.ClosingTag" />
-
+	
 </ruleset>

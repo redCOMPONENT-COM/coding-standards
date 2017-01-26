@@ -17,11 +17,12 @@
     <exclude-pattern type="relative">libraries/*</exclude-pattern>
     <exclude-pattern type="relative">vendor/*</exclude-pattern>
 
-	<!-- Exclude layouts, views & tmpl folders -->
+	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
     <exclude-pattern type="relative">*/layouts/*</exclude-pattern>
     <exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
 
-	<!-- Exclude underscore stuff -->
+	<!-- Exclude naming conventions to allow underscores in properties -->
+	<!-- and allow leading underscores for methods                     -->
 	<rule ref="Joomla.NamingConventions.ValidVariableName">
 		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyNotCamelCaps"/>
 		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyNotCamelCaps"/>

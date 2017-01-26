@@ -80,13 +80,16 @@ class Joomla_Sniffs_NamingConventions_ValidVariableNameSniff extends Squiz_Sniff
 					if (substr($objVarName, 0, 1) === '_')
 					{
 						$objVarName = substr($objVarName, 1);
+						$error = 'Call to property "%s" must not contain a leading underscore';
+						$data  = array($originalVarName);
+						$phpcsFile->addError($error, $stackPtr, 'PropertyCallHasLeadingUnderscore', $data);
 					}
 
 					if (PHP_CodeSniffer::isCamelCaps($objVarName, false, true, false) === false)
 					{
 						$error = 'Call to property "%s" is not in valid camel caps format';
 						$data  = array($originalVarName);
-						$phpcsFile->addError($error, $var, 'PropertyNotCamelCaps', $data);
+						$phpcsFile->addError($error, $var, 'PropertyCallNotCamelCaps', $data);
 					}
 				}
 			}
@@ -96,14 +99,28 @@ class Joomla_Sniffs_NamingConventions_ValidVariableNameSniff extends Squiz_Sniff
 
 		if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON)
 		{
+			if (substr($varName, 0, 1) === '_')
+			{
+				$error = 'Call to static property "%s" must not contain a leading underscore';
+				$data  = array($varName);
+				$phpcsFile->addError($error, $stackPtr, 'StaticPropertyCallHasLeadingUnderscore', $data);
+			}
+
 			if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false)
 			{
 				$error = 'Call to static property "%s" is not in valid camel caps format';
 				$data  = array($varName);
-				$phpcsFile->addError($error, $stackPtr, 'StaticPropertyNotCamelCaps', $data);
+				$phpcsFile->addError($error, $stackPtr, 'StaticPropertyCallNotCamelCaps', $data);
 			}
 
 			return;
+		}
+
+		if (substr($varName, 0, 1) === '_')
+		{
+			$error = 'Variable "%s" must not contain a leading underscore';
+			$data  = array($varName);
+			$phpcsFile->addError($error, $stackPtr, 'VariableHasLeadingUnderscore', $data);
 		}
 
 		if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false)
@@ -143,20 +160,20 @@ class Joomla_Sniffs_NamingConventions_ValidVariableNameSniff extends Squiz_Sniff
 
 		if (substr($varName, 0, 1) === '_')
 		{
-			$error = '%s member variable "%s" must not contain a leading underscore';
+			$error = '%s class property "%s" must not contain a leading underscore';
 			$data  = array(
 				ucfirst($memberProps['scope']),
 				$errorData[0]
 			);
-			$phpcsFile->addError($error, $stackPtr, 'ClassVarHasUnderscore', $data);
+			$phpcsFile->addError($error, $stackPtr, 'ClassPropertyHasUnderscore', $data);
 
 			return;
 		}
 
 		if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false)
 		{
-			$error = 'Member variable "%s" is not in valid camel caps format';
-			$phpcsFile->addError($error, $stackPtr, 'MemberNotCamelCaps', $errorData);
+			$error = 'Class property "%s" is not in valid camel caps format';
+			$phpcsFile->addError($error, $stackPtr, 'ClassPropertyNotCamelCaps', $errorData);
 		}
 	}
 }

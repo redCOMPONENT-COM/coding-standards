@@ -64,43 +64,53 @@ class Joomla_Sniffs_NamingConventions_ValidVariableNameSniff extends Squiz_Sniff
 
 			if ($tokens[$var]['code'] === T_STRING)
 			{
-				return;
+				$bracket = $phpcsFile->findNext(array(T_WHITESPACE), ($var + 1), null, true);
+
+				if ($tokens[$bracket]['code'] !== T_OPEN_PARENTHESIS)
+				{
+					$objVarName = $tokens[$var]['content'];
+
+					/*
+					 * There is no way for us to know if the var is public or
+					 * private, so we have to ignore a leading underscore if there is
+					 * one and just check the main part of the variable name.
+					 */
+					$originalVarName = $objVarName;
+
+					if (substr($objVarName, 0, 1) === '_')
+					{
+						$objVarName = substr($objVarName, 1);
+					}
+
+					if (PHP_CodeSniffer::isCamelCaps($objVarName, false, true, false) === false)
+					{
+						$error = 'Call to property "%s" is not in valid camel caps format';
+						$data  = array($originalVarName);
+						$phpcsFile->addError($error, $var, 'PropertyNotCamelCaps', $data);
+					}
+				}
 			}
 		}
 
-		/*
-		 * There is no way for us to know if the var is public or private,
-		 * so we have to ignore a leading underscore if there is one and just
-		 * check the main part of the variable name.
-		 */
-		$originalVarName = $varName;
+		$objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
 
-		if (substr($varName, 0, 1) === '_')
+		if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON)
 		{
-			$objOperator = $phpcsFile->findPrevious(array(T_WHITESPACE), ($stackPtr - 1), null, true);
-
-			if ($tokens[$objOperator]['code'] === T_DOUBLE_COLON)
+			if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false)
 			{
-				// The variable lives within a class, and is referenced like
-				// this: MyClass::$_variable, so we don't know its scope.
-				$inClass = true;
-			}
-			else
-			{
-				$inClass = $phpcsFile->hasCondition($stackPtr, array(T_CLASS, T_INTERFACE, T_TRAIT));
+				$error = 'Call to static property "%s" is not in valid camel caps format';
+				$data  = array($varName);
+				$phpcsFile->addError($error, $stackPtr, 'StaticPropertyNotCamelCaps', $data);
 			}
 
-			if ($inClass === true)
-			{
-				$varName = substr($varName, 1);
-			}
+			return;
 		}
 
 		if (PHP_CodeSniffer::isCamelCaps($varName, false, true, false) === false)
 		{
 			$error = 'Variable "%s" is not in valid camel caps format';
-			$data  = array($originalVarName);
-			$phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
+			$data  = array($varName);
+			$phpcsFile->addError($error, $stackPtr, 'VariableNotCamelCaps', $data);
 		}
 	}
 

@@ -14,7 +14,7 @@
     <exclude-pattern type="relative">tests/*</exclude-pattern>
 
     <!-- Exclude 3rd party libraries. -->
-    <exclude-pattern type="relative">libraries/*</exclude-pattern>
+    <exclude-pattern type="relative">libraries/mdpf/*</exclude-pattern>
     <exclude-pattern type="relative">vendor/*</exclude-pattern>
 
 	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->

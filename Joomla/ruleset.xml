@@ -24,10 +24,12 @@
 	<!-- Exclude naming conventions to allow underscores in properties -->
 	<!-- and allow leading underscores for methods                     -->
 	<rule ref="Joomla.NamingConventions.ValidVariableName">
-		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyNotCamelCaps"/>
-		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyNotCamelCaps"/>
-		<exclude name="Joomla.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
-		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassVarHasUnderscore"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyCallNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyCallHasLeadingUnderscore"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyCallNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyCallHasLeadingUnderscore"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassPropertyNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassPropertyHasUnderscore"/>
 	</rule>
 	<rule ref="Joomla.NamingConventions.ValidFunctionName">
 		<exclude name="Joomla.NamingConventions.ValidFunctionName.MethodUnderscore"/>

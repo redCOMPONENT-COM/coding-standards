@@ -23,6 +23,8 @@
 
 	<!-- Exclude underscore stuff -->
 	<rule ref="Joomla.NamingConventions.ValidVariableName">
+		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyNotCamelCaps"/>
 		<exclude name="Joomla.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
 		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassVarHasUnderscore"/>
 	</rule>
@@ -158,7 +160,7 @@
 	<rule ref="Squiz.Commenting.DocCommentAlignment" />
 	<rule ref="Squiz.Commenting.VariableComment">
 		<exclude name="Squiz.Commenting.VariableComment.TagNotAllowed" />
-	</rule>	
+	</rule>
 	<rule ref="Squiz.Operators.IncrementDecrementUsage">
 		<exclude name="Squiz.Operators.IncrementDecrementUsage.processAssignment" />
 	</rule>
@@ -194,5 +196,5 @@
 
 	<!-- Include some additional sniffs from the Zend standard -->
 	<rule ref="Zend.Files.ClosingTag" />
-	
+
 </ruleset>

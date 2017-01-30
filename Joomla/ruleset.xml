@@ -10,16 +10,20 @@
 	<!-- Include all sniffs in an external standard directory -->
 
 	<!-- Exclude folders not containing production code -->
-    <exclude-pattern type="relative">build/*</exclude-pattern>
-    <exclude-pattern type="relative">tests/*</exclude-pattern>
+    	<exclude-pattern type="relative">build/*</exclude-pattern>
+    	<exclude-pattern type="relative">tests/*</exclude-pattern>
 
-    <!-- Exclude 3rd party libraries. -->
-    <exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
-    <exclude-pattern type="relative">vendor/*</exclude-pattern>
+    	<!-- Exclude 3rd party libraries. -->
+    	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
+    	<exclude-pattern type="relative">vendor/*</exclude-pattern>
 
 	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
-    <exclude-pattern type="relative">*/layouts/*</exclude-pattern>
-    <exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+	
+	<!-- Exclude JS & CSS files -->
+	<exclude-pattern type="relative">*.js</exclude-pattern>
+	<exclude-pattern type="relative">*.css</exclude-pattern>
 
 	<!-- Exclude naming conventions to allow underscores in properties -->
 	<!-- and allow leading underscores for methods                     -->

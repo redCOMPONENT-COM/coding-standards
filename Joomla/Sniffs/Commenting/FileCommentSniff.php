@@ -2,6 +2,7 @@
 /**
  * Joomla! Coding Standard
  *
+ * @package   Joomla.CodingStandard
  * @copyright  Copyright (C) 2015 Open Source Matters, Inc. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
@@ -209,7 +210,7 @@ class Joomla_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_Sniff
 	{
 		$tokens = $phpcsFile->getTokens();
 
-		if (get_class($this) === 'PEAR_Sniffs_Commenting_FileCommentSniff')
+		if (get_class($this) === 'Joomla_Sniffs_Commenting_FileCommentSniff')
 		{
 			$docBlock = 'file';
 		}
@@ -529,7 +530,7 @@ class Joomla_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_Sniff
 			if (preg_match('/^.*?([0-9]{4})((.{1})([0-9]{4}))? (.+)$/', $content, $matches) !== 0)
 			{
 				// Check earliest-latest year order.
-				if ($matches[3] !== '')
+				if ($matches[3] !== '' && $matches[3] !== null)
 				{
 					if ($matches[3] !== '-')
 					{
@@ -537,7 +538,7 @@ class Joomla_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_Sniff
 						$phpcsFile->addError($error, $tag, 'CopyrightHyphen');
 					}
 
-					if ($matches[4] !== '' && $matches[4] < $matches[1])
+					if ($matches[4] !== '' && $matches[4] !== null && $matches[4] < $matches[1])
 					{
 						$error = "Invalid year span \"$matches[1]$matches[3]$matches[4]\" found; consider \"$matches[4]-$matches[1]\" instead";
 						$phpcsFile->addWarning($error, $tag, 'InvalidCopyright');

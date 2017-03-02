@@ -2,6 +2,7 @@
 /**
  * Joomla! Coding Standard
  *
+ * @package    Joomla.CodingStandard
  * @copyright  Copyright (C) 2015 Open Source Matters, Inc. All rights reserved.
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License Version 2 or Later
  */
@@ -9,7 +10,6 @@
 /**
  * ControlStructuresBracketsUnitTest
  *
- * @package   Joomla.CodingStandard
  * @since     1.0
  */
 class Joomla_Tests_ControlStructures_ControlStructuresBracketsUnitTest extends AbstractSniffUnitTest
@@ -25,13 +25,15 @@ class Joomla_Tests_ControlStructures_ControlStructuresBracketsUnitTest extends A
 	public function getErrorList()
 	{
 		return array(
-				9  => 1,
-				15 => 1,
-				20 => 2,
+				10  => 1,
+				16 => 1,
+				22 => 1,
 				26 => 1,
-				31 => 1,
+				33 => 1,
 				38 => 1,
 				44 => 1,
+				51 => 1,
+				57 => 1,
 			   );
 	}
 
@@ -45,6 +47,6 @@ class Joomla_Tests_ControlStructures_ControlStructuresBracketsUnitTest extends A
 	 */
 	public function getWarningList()
 	{
-		return array(5 => 1,);
+		return array(6 => 1,);
 	}
 }

@@ -12,7 +12,7 @@ If you want to contribute and improve this documentation, you can find the sourc
 * PHP 5.3+
 * [PHP Codesniffer](https://github.com/squizlabs/PHP_CodeSniffer) 2.8+
 
-**Important note**: currently the latest PHPCS is the 3.x series. But the Joomla custom sniffs are not yet compatible with this version. PEAR and composer give you the option to install it by default but the Joomla custom sniffs will not work, thus we you remind to always install the PHPCS 2.x series if you are using the Joomla custom sniffs. Also note that the Joomla Code Standard ruleset.xml is compatable with PHPCS 3.x if you exclude the Joomla custom sniffs.
+**Important note**: currently the latest PHPCS is the 3.x series. But the Joomla custom sniffs are not yet compatible with this version. PEAR and composer give you the option to install it by default but the Joomla custom sniffs will not work, so we remind you to always install the PHPCS 2.x series if you are using the Joomla custom sniffs. Also note that the Joomla Code Standard ruleset.xml is compatable with PHPCS 3.x if you exclude the Joomla custom sniffs.
 
 ## Installation via Composer
 
@@ -102,4 +102,5 @@ The last most common adjustment is removing PHP 5.3 specific rules which prevent
 
 There is further information on how to set up IDE auto formatters here: 
 
-	https://github.com/joomla/coding-standards/tree/master/IDE
+[https://github.com/joomla/coding-standards/tree/master/Joomla/IDE](https://github.com/joomla/coding-standards/tree/master/Joomla/IDE)
+	

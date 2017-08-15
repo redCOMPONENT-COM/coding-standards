@@ -39,6 +39,17 @@
 		<exclude name="Joomla.NamingConventions.ValidFunctionName.MethodUnderscore"/>
 	</rule>
 
+	<!-- redWEB included sniffs -->
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+	<rule ref="Generic.Commenting.Todo"/>
+	<rule ref="Generic.Commenting.Fixme"/>
+	<rule ref="Generic.Formatting.MultipleStatementAlignment"/>
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<rule ref="Generic.PHP.NoSilencedErrors"/>
+	<rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
+	<rule ref="Squiz.PHP.Eval"/>
+	<rule ref="Squiz.PHP.NonExecutableCode"/>
+
 	<!-- Include some additional sniffs from the Generic standard -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
@@ -179,8 +190,6 @@
 	<rule ref="Squiz.Scope.MethodScope">
 		<message>No scope modifier specified for function "%s</message>
 	</rule>
-
-	<rule ref="Squiz.Scope.StaticThisUsage" />
 
 	<rule ref="Squiz.Strings.ConcatenationSpacing">
 		<properties>

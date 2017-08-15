@@ -8,7 +8,11 @@
 >
 	<description>Created with the PHP Coding Standard Generator. http://edorian.github.com/php-coding-standard-generator/</description>
 	<rule ref="rulesets/design.xml/GotoStatement"/>
-	<rule ref="rulesets/naming.xml/ShortVariable"/>
+	<rule ref="rulesets/naming.xml/ShortVariable">
+		<properties>
+			<property name="minimum" value="2"/>
+    	</properties>
+	</rule>
 	<rule ref="rulesets/naming.xml/LongVariable"/>
 	<rule ref="rulesets/naming.xml/ShortMethodName"/>
 	<rule ref="rulesets/naming.xml/ConstantNamingConventions"/>

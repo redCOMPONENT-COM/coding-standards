@@ -18,6 +18,8 @@
     	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
     	<exclude-pattern type="relative">docs/*</exclude-pattern>
     	<exclude-pattern type="relative">resources/*</exclude-pattern>
+    	<exclude-pattern type="relative">.travis/*</exclude-pattern>
+    	<exclude-pattern type="relative">.git/*</exclude-pattern>
 
     	<!-- Exclude 3rd party libraries. -->
     	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>

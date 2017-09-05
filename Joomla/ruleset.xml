@@ -12,10 +12,18 @@
 	<!-- Exclude folders not containing production code -->
     	<exclude-pattern type="relative">build/*</exclude-pattern>
     	<exclude-pattern type="relative">tests/*</exclude-pattern>
+    	<exclude-pattern type="relative">languages/*</exclude-pattern>
+    	<exclude-pattern type="relative">media/*</exclude-pattern>
+    	<exclude-pattern type="relative">src/*</exclude-pattern>
+    	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
+    	<exclude-pattern type="relative">docs/*</exclude-pattern>
+    	<exclude-pattern type="relative">resources/*</exclude-pattern>
+    	<exclude-pattern type="relative">.*/*</exclude-pattern>
 
     	<!-- Exclude 3rd party libraries. -->
     	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
-    	<exclude-pattern type="relative">vendor/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
 
 	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
     	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
@@ -49,6 +57,7 @@
 	<rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
 	<rule ref="Squiz.PHP.Eval"/>
 	<rule ref="Squiz.PHP.NonExecutableCode"/>
+	<rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
 
 	<!-- Include some additional sniffs from the Generic standard -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax" />

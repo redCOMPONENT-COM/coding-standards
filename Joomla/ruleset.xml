@@ -9,6 +9,56 @@
 
 	<!-- Include all sniffs in an external standard directory -->
 
+	<!-- Exclude folders not containing production code -->
+    	<exclude-pattern type="relative">build/*</exclude-pattern>
+    	<exclude-pattern type="relative">tests/*</exclude-pattern>
+    	<exclude-pattern type="relative">languages/*</exclude-pattern>
+    	<exclude-pattern type="relative">media/*</exclude-pattern>
+    	<exclude-pattern type="relative">src/*</exclude-pattern>
+    	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
+    	<exclude-pattern type="relative">docs/*</exclude-pattern>
+    	<exclude-pattern type="relative">resources/*</exclude-pattern>
+    	<exclude-pattern type="relative">.*/*</exclude-pattern>
+
+    	<!-- Exclude 3rd party libraries. -->
+    	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
+
+	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
+    	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
+    	<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+	
+	<!-- Exclude JS & CSS files -->
+	<exclude-pattern type="relative">*.js</exclude-pattern>
+	<exclude-pattern type="relative">*.css</exclude-pattern>
+
+	<!-- Exclude naming conventions to allow underscores in properties -->
+	<!-- and allow leading underscores for methods                     -->
+	<rule ref="Joomla.NamingConventions.ValidVariableName">
+		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyCallNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.PropertyCallHasLeadingUnderscore"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyCallNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.StaticPropertyCallHasLeadingUnderscore"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassPropertyNotCamelCaps"/>
+		<exclude name="Joomla.NamingConventions.ValidVariableName.ClassPropertyHasUnderscore"/>
+	</rule>
+	<rule ref="Joomla.NamingConventions.ValidFunctionName">
+		<exclude name="Joomla.NamingConventions.ValidFunctionName.MethodUnderscore"/>
+	</rule>
+
+	<!-- redWEB included sniffs -->
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+	<rule ref="Generic.Commenting.Todo"/>
+	<rule ref="Generic.Commenting.Fixme"/>
+	<rule ref="Generic.Formatting.MultipleStatementAlignment"/>
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<rule ref="Generic.PHP.NoSilencedErrors"/>
+	<rule ref="Squiz.PHP.DisallowMultipleAssignments"/>
+	<rule ref="Squiz.PHP.Eval"/>
+	<rule ref="Squiz.PHP.NonExecutableCode"/>
+	<rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
+
 	<!-- Include some additional sniffs from the Generic standard -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
@@ -137,7 +187,7 @@
 	<rule ref="Squiz.Commenting.DocCommentAlignment" />
 	<rule ref="Squiz.Commenting.VariableComment">
 		<exclude name="Squiz.Commenting.VariableComment.TagNotAllowed" />
-	</rule>	
+	</rule>
 	<rule ref="Squiz.Operators.IncrementDecrementUsage">
 		<exclude name="Squiz.Operators.IncrementDecrementUsage.processAssignment" />
 	</rule>
@@ -149,8 +199,6 @@
 	<rule ref="Squiz.Scope.MethodScope">
 		<message>No scope modifier specified for function "%s</message>
 	</rule>
-
-	<rule ref="Squiz.Scope.StaticThisUsage" />
 
 	<rule ref="Squiz.Strings.ConcatenationSpacing">
 		<properties>

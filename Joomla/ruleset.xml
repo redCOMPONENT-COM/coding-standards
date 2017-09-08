@@ -56,6 +56,9 @@
 	<rule ref="Generic.Commenting.Fixme.CommentFound">
 		<type>warning</type>
 	</rule>
+	<rule ref="Generic.Commenting.Fixme.TaskFound">
+		<type>warning</type>
+	</rule>
 	<rule ref="Generic.Formatting.MultipleStatementAlignment"/>
 	<rule ref="Generic.NamingConventions.ConstructorName"/>
 	<rule ref="Generic.PHP.NoSilencedErrors"/>

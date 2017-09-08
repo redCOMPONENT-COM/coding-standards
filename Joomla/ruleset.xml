@@ -9,7 +9,7 @@
 
 	<!-- Include all sniffs in an external standard directory -->
 
-	<!-- Exclude folders not containing production code -->
+	<!-- Exclude folders & files not containing production code -->
     	<exclude-pattern type="relative">build/*</exclude-pattern>
     	<exclude-pattern type="relative">tests/*</exclude-pattern>
     	<exclude-pattern type="relative">languages/*</exclude-pattern>
@@ -20,13 +20,14 @@
     	<exclude-pattern type="relative">resources/*</exclude-pattern>
     	<exclude-pattern type="relative">.travis/*</exclude-pattern>
     	<exclude-pattern type="relative">.git/*</exclude-pattern>
+    	<exclude-pattern type="relative">RoboFile.*</exclude-pattern>
 
     	<!-- Exclude 3rd party libraries. -->
     	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
     	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
     	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
 
-	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
+	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/etc. syntax -->
     	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
     	<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
 	
@@ -52,6 +53,9 @@
 	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
 	<rule ref="Generic.Commenting.Todo"/>
 	<rule ref="Generic.Commenting.Fixme"/>
+	<rule ref="Generic.Commenting.Fixme.CommentFound">
+		<type>warning</type>
+	</rule>
 	<rule ref="Generic.Formatting.MultipleStatementAlignment"/>
 	<rule ref="Generic.NamingConventions.ConstructorName"/>
 	<rule ref="Generic.PHP.NoSilencedErrors"/>

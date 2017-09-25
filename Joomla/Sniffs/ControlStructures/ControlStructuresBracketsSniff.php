@@ -178,6 +178,22 @@ class Joomla_Sniffs_ControlStructures_ControlStructuresBracketsSniff implements 
 			// We need to divide by 4 here since there is a space vs tab intent in the check vs token
 			$expected /= $this->indent;
 			$spaces   /= $this->indent;
+			
+			$closure = in_array('PHPCS_T_CLOSURE', $tokens[$stackPtr]['conditions']);
+			
+			$lastStr = $phpcsFile->findPrevious(T_STRING, $stackPtr);
+
+			/*
+			 * If we're inside a closure that's written directly as a function parameter and not stored in a variable
+			 * add 1 to the expected number of tabs to avoid false-positive 'SpaceBeforeBrace' error
+			 */
+			if ($tokens[$lastStr + 1]['type'] === 'T_OPEN_PARENTHESIS'
+				&& $closure
+				&& $spaces !== $expected
+			)
+			{
+				$expected += 1;
+			}
 
 			if ($spaces !== $expected)
 			{

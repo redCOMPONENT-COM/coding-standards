@@ -57,9 +57,16 @@
 	<rule ref="Squiz.PHP.Eval"/>
 	<rule ref="Squiz.PHP.NonExecutableCode"/>
 	<rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
+	<rule ref="Generic">
+		 <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+	<rule ref="Joomla.Classes.InstantiateNewClasses">
+		<properties>
+			<property name="shortArraySyntax" value="true"/>
+		</properties>
+	</rule>
 
 	<!-- Include some additional sniffs from the Generic standard -->
-	<rule ref="Generic.Arrays.DisallowShortArraySyntax" />
 	<rule ref="Generic.ControlStructures.InlineControlStructure" />
 	<rule ref="Generic.Files.EndFileNewline" />
 

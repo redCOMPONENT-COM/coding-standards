@@ -27,7 +27,7 @@
 	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/ect. syntax -->
     	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
     	<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
-	
+
 	<!-- Exclude JS & CSS files -->
 	<exclude-pattern type="relative">*.js</exclude-pattern>
 	<exclude-pattern type="relative">*.css</exclude-pattern>
@@ -57,9 +57,6 @@
 	<rule ref="Squiz.PHP.Eval"/>
 	<rule ref="Squiz.PHP.NonExecutableCode"/>
 	<rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
-	<rule ref="Generic">
-		 <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
-	</rule>
 	<rule ref="Joomla.Classes.InstantiateNewClasses">
 		<properties>
 			<property name="shortArraySyntax" value="true"/>

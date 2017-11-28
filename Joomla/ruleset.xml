@@ -14,7 +14,6 @@
     	<exclude-pattern type="relative">tests/*</exclude-pattern>
     	<exclude-pattern type="relative">languages/*</exclude-pattern>
     	<exclude-pattern type="relative">media/*</exclude-pattern>
-    	<exclude-pattern type="relative">src/*</exclude-pattern>
     	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
     	<exclude-pattern type="relative">docs/*</exclude-pattern>
     	<exclude-pattern type="relative">resources/*</exclude-pattern>

@@ -125,20 +125,25 @@ class Joomla_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenti
 					{
 						$endToken    = $tokens[$stackPtr]['scope_closer'];
 						$returnToken = $phpcsFile->findNext(array(T_RETURN, T_YIELD), $stackPtr, $endToken);
-
+						
 						if ($returnToken === false)
 						{
-							$error = 'Function return type is not void, but function has no return statement';
-							$phpcsFile->addError($error, $return, 'InvalidNoReturn');
+								$error = 'Function return type is not void, but function has no return statement';
+								$phpcsFile->addError($error, $return, 'InvalidNoReturn');
 						}
 						else
 						{
-							$semicolon = $phpcsFile->findNext(T_WHITESPACE, ($returnToken + 1), null, true);
-
-							if ($tokens[$semicolon]['code'] === T_SEMICOLON)
+							while ($returnToken !== false)
 							{
-								$error = 'Function return type is not void, but function is returning void here';
-								$phpcsFile->addError($error, $returnToken, 'InvalidReturnNotVoid');
+								$semicolon = $phpcsFile->findNext(T_WHITESPACE, ($returnToken + 1), null, true);
+
+								if ($tokens[$semicolon]['code'] === T_SEMICOLON)
+								{
+									$error = 'Function return type is not void, but function is returning void here';
+									$phpcsFile->addError($error, $returnToken, 'InvalidReturnNotVoid');
+								}
+							
+								$returnToken = $phpcsFile->findNext(array(T_RETURN, T_YIELD), $returnToken + 1, $endToken);
 							}
 						}
 					}

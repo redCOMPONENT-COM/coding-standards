@@ -22,7 +22,6 @@
     	<exclude-pattern type="relative">RoboFile.*</exclude-pattern>
 
     	<!-- Exclude 3rd party libraries. -->
-    	<exclude-pattern type="relative">libraries/mpdf/*</exclude-pattern>
     	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
     	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
 

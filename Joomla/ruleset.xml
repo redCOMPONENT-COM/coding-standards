@@ -10,30 +10,32 @@
 	<!-- Include all sniffs in an external standard directory -->
 
 	<!-- Exclude folders & files not containing production code -->
-    	<exclude-pattern type="relative">build/*</exclude-pattern>
-    	<exclude-pattern type="relative">tests/*</exclude-pattern>
-    	<exclude-pattern type="relative">languages/*</exclude-pattern>
-    	<exclude-pattern type="relative">media/*</exclude-pattern>
-    	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
-    	<exclude-pattern type="relative">docs/*</exclude-pattern>
-    	<exclude-pattern type="relative">resources/*</exclude-pattern>
-    	<exclude-pattern type="relative">.travis/*</exclude-pattern>
-    	<exclude-pattern type="relative">.git/*</exclude-pattern>
-    	<exclude-pattern type="relative">RoboFile.*</exclude-pattern>
+	<exclude-pattern type="relative">build/*</exclude-pattern>
+	<exclude-pattern type="relative">tests/*</exclude-pattern>
+	<exclude-pattern type="relative">languages/*</exclude-pattern>
+	<exclude-pattern type="relative">media/*</exclude-pattern>
+	<exclude-pattern type="relative">jgulp/*</exclude-pattern>
+	<exclude-pattern type="relative">docs/*</exclude-pattern>
+	<exclude-pattern type="relative">resources/*</exclude-pattern>
+	<exclude-pattern type="relative">.travis/*</exclude-pattern>
+	<exclude-pattern type="relative">.git/*</exclude-pattern>
+	<exclude-pattern type="relative">RoboFile.*</exclude-pattern>
 
-    	<!-- Exclude 3rd party libraries. -->
-    	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
-    	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
-
-	<!-- Exclude layouts & tmpl folders to avoid looping errors caused by alt. if-else/foreach/etc. syntax -->
-    	<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
-    	<exclude-pattern type="absolute">layouts/*</exclude-pattern>
-    	<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
-    	<exclude-pattern type="absolute">tmpl/*</exclude-pattern>
+	<!-- Exclude 3rd party libraries. -->
+	<exclude-pattern type="relative">*/vendor/*</exclude-pattern>
+	<exclude-pattern type="relative">*/node_modules/*</exclude-pattern>
 
 	<!-- Exclude JS & CSS files -->
 	<exclude-pattern type="relative">*.js</exclude-pattern>
 	<exclude-pattern type="relative">*.css</exclude-pattern>
+
+	<!-- Exclude file docblock in template files -->
+	<rule ref="Joomla.Commenting.FileComment">
+		<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
+		<exclude-pattern type="absolute">layouts/*</exclude-pattern>
+		<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+		<exclude-pattern type="absolute">tmpl/*</exclude-pattern>
+	</rule>
 
 	<!-- Exclude naming conventions to allow underscores in properties -->
 	<!-- and allow leading underscores for methods                     -->
@@ -114,6 +116,14 @@
 			<property name="indent" value="4"/>
 			<property name="tabIndent" value="true"/>
 		</properties>
+	</rule>
+
+	<!-- Added to avoid conflicts with Generic.WhiteSpace.ScopeIndent.Incorrect -->
+	<rule ref="Joomla.ControlStructures.ControlStructuresBrackets.SpaceBeforeBrace">
+		<exclude-pattern type="relative">*/layouts/*</exclude-pattern>
+		<exclude-pattern type="absolute">layouts/*</exclude-pattern>
+		<exclude-pattern type="relative">*/tmpl/*</exclude-pattern>
+		<exclude-pattern type="absolute">tmpl/*</exclude-pattern>
 	</rule>
 
 	<!-- Include some additional sniffs from the PEAR standard -->

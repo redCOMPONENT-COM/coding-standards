@@ -78,6 +78,14 @@ class Joomla_Sniffs_ControlStructures_ControlStructuresBracketsSniff implements 
 
 		if ($braceLine === $controlStructureLine)
 		{
+			// Excludes alternative syntax like ```if ($a == true) : ``` which is usually used for templating with HTML
+			if ($tokens[$openBrace]['code'] === "PHPCS_T_COLON")
+			{
+				$phpcsFile->recordMetric($stackPtr, 'Rule ignored because alternative syntax is used', 'same line');
+
+				return;
+			}
+
 			$phpcsFile->recordMetric($stackPtr, 'Control Structure opening brace placement', 'same line');
 			$error = 'Opening brace of a %s must be on the line after the definition';
 			$fix   = $phpcsFile->addFixableError($error, $openBrace, 'OpenBraceNewLine', $errorData);
@@ -187,9 +195,9 @@ class Joomla_Sniffs_ControlStructures_ControlStructuresBracketsSniff implements 
 			// We need to divide by 4 here since there is a space vs tab intent in the check vs token
 			$expected /= $this->indent;
 			$spaces   /= $this->indent;
-			
+
 			$closure = in_array('PHPCS_T_CLOSURE', $tokens[$stackPtr]['conditions']);
-			
+
 			$lastStr = $phpcsFile->findPrevious(T_STRING, $stackPtr);
 
 			/*

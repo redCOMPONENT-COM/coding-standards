@@ -401,6 +401,31 @@ class JFooHelper
 }
 ```
 
+### Namespaces
+
+Namespaces are formatted according to this flow. First there is the file docblock followed by the namespace the file lives in. When required, the namespace is followed by the `defined` check. Lastly, the
+imported classes using the `use` keyword. All namespace imports must be alphabetically ordered.
+
+```php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  mod_quickicon
+ *
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace Joomla\Module\Quickicon\Administrator\Helper;
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
+```
+
 ### Constants
 
 Constants should always be all-uppercase, with underscores to separate words. Prefix constant names with the uppercase name of the class/package they are used in. For example, the constants used by the `JError` class all begin with `JERROR_`.
@@ -522,10 +547,10 @@ $query->select($db->quoteName(array('user_id', 'profile_key', 'profile_value', '
 ```php
 $query  = $db->getQuery(true)
             ->select(array(
-                    $db->qn('profile_key'),
-                    $db->qn('profile_value'),
+                    $db->quoteName('profile_key'),
+                    $db->quoteName('profile_value'),
                     ))
-            ->from($db->qn('#__user_profiles'))
-            ->where($db->qn('user_id') . ' = ' . $db->q((int) $userId))
-            ->order($db->qn('ordering'));
+            ->from($db->quoteName('#__user_profiles'))
+            ->where($db->quoteName('user_id') . ' = ' . (int) $userId)
+            ->order($db->quoteName('ordering'));
 ```

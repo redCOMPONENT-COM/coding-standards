@@ -103,7 +103,14 @@ class Joomla_Sniffs_ControlStructures_WhiteSpaceBeforeSniff implements PHP_CodeS
 
 			if ($fix === true)
 			{
-				$phpcsFile->fixer->addNewlineBefore($stackPtr);
+				foreach ($tokens as $key => $tkn)
+				{
+					if ($tokens[$stackPtr]['line'] === $tkn['line'])
+					{
+						$phpcsFile->fixer->addNewlineBefore($key);
+						break;
+					}
+				}
 			}
 		}
 	}
